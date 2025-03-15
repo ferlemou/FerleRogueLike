@@ -11,6 +11,12 @@ public class EnemyMove : MonoBehaviour
     private Transform target;
     private Rigidbody2D rig;
     
+    private void OnEnable() {
+        PlayerHealth.OnPlayerDeath += PlayerDeath;
+    }
+    private void OnDisable() {
+        PlayerHealth.OnPlayerDeath -= PlayerDeath;
+    }
     private void Start() {
         rig = GetComponent<Rigidbody2D>();
         GameObject playerTarget = GameObject.FindWithTag("Player");
@@ -34,5 +40,8 @@ public class EnemyMove : MonoBehaviour
             moviment = new Vector2 (direction.x, direction.y) * speed * Time.deltaTime;
             rig.MovePosition(rig.position + moviment);
         }
+    }
+    private void PlayerDeath(){
+        speed = 0f;
     }
 }

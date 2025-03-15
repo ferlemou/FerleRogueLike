@@ -10,6 +10,12 @@ public class PlayerMove : MonoBehaviour
     private VariableJoystick variableJoystick;
     private GameObject joystick;
 
+    private void OnEnable() {
+        PlayerHealth.OnPlayerDeath += PlayerDeath;
+    }
+    private void OnDisable() {
+        PlayerHealth.OnPlayerDeath -= PlayerDeath;
+    }
     private void Start() {
         rig = GetComponent<Rigidbody2D>();
         joystick = GameObject.Find("Canvas/Variable Joystick");
@@ -22,5 +28,8 @@ public class PlayerMove : MonoBehaviour
     }
     private void Moviment(){
         rig.velocity = new Vector2(variableJoystick.Horizontal * speed, variableJoystick.Vertical * speed);
+    }
+    private void PlayerDeath(){
+        speed = 0f;
     }
 }

@@ -18,6 +18,15 @@ public class SpawnManager : MonoBehaviour
 
     private Transform center;
     private Vector3 SpawnPosition;
+    private void OnEnable() {
+        PlayerHealth.OnPlayerDeath += PlayerDeath;
+    }
+    private void OnDisable() {
+        PlayerHealth.OnPlayerDeath -= PlayerDeath;
+    }
+    private void PlayerDeath(){
+        Spawning = false;
+    }
     void Start()
     {
         Spawning = true; //true

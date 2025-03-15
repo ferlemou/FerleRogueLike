@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIGame : MonoBehaviour
 {
     [SerializeField]
     private TMP_Text uiHealth, uiDeaths, uiLevel, uiExp;

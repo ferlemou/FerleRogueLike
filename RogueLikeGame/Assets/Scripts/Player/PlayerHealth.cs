@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     public static event Action<float> OnPlayerDamaged;
+    public static event Action OnPlayerDeath;
 
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,6 +32,10 @@ public class PlayerHealth : MonoBehaviour
             health = health - damage;
             OnPlayerDamaged?.Invoke(health);
             canDamage = Time.time + cooldownDamage;
+
+            if (health <= 0){
+                OnPlayerDeath?.Invoke();
+            }
         }
     }
     IEnumerator ColorDamage(){
