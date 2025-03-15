@@ -1,18 +1,38 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField]
+    private TMP_Text uiHealth, uiDeaths, uiLevel, uiExp;
+    private int deaths;
+    private void OnEnable() {
+        PlayerHealth.OnPlayerDamaged += ShowHealth;
+        EnemyHealth.MonsterDeath += ShowDeaths;
+        PlayerLevel.LevelUp += ShowLevelUp;
+        PlayerLevel.ExpUp += ShowExp;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnDisable() {
+        PlayerHealth.OnPlayerDamaged -= ShowHealth;
+        EnemyHealth.MonsterDeath -= ShowDeaths;
+    }
+    private void Start() {
+        ShowDeaths();
+    }
+    private void ShowHealth(float health){
+        uiHealth.text = "Health: " + health.ToString();
+    }
+    private void ShowDeaths(){
+        deaths++;
+        uiDeaths.text = "Deaths: " + deaths.ToString();
+    }
+    private void ShowLevelUp(int level){
+        uiLevel.text = "Level: " + level.ToString();
+    }
+    private void ShowExp(float exp){
+        uiExp.text = "Exp: " + exp.ToString();
     }
 }

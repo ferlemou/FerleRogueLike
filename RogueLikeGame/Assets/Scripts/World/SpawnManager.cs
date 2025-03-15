@@ -14,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     private int limitX, limitY;
     private int directionSpawn, ValueRandom;
     private float enemyLife;
+    private float enemyExp;
 
     private Transform center;
     private Vector3 SpawnPosition;
@@ -62,7 +63,8 @@ public class SpawnManager : MonoBehaviour
             EnemyHealth enemyHealth = EnemyInstan.GetComponent<EnemyHealth>();
             if (enemyHealth != null) {
                 enemyLife = 10f;
-                enemyHealth.Started(enemyLife);
+                enemyExp = 15f;
+                enemyHealth.Started(enemyLife, enemyExp);
             }
 
             yield return new WaitForSeconds(SpawnRate);

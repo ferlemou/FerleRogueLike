@@ -17,6 +17,12 @@ public class EnemyMove : MonoBehaviour
         if(playerTarget != null) {
             target = playerTarget.transform;
         }
+        GameObject[] walls = GameObject.FindGameObjectsWithTag("Wall");
+        foreach(GameObject wall in walls) {
+            if (wall.GetComponent<BoxCollider2D>() != null) {
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), wall.GetComponent<BoxCollider2D>(), true);
+            }
+        }
     }
     private void FixedUpdate() {
         Follow();

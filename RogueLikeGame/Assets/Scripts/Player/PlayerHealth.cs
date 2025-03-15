@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,13 +18,18 @@ public class PlayerHealth : MonoBehaviour
     private Color colorDamage = Color.red;
 
     private SpriteRenderer spriteRenderer;
+
+    public static event Action<float> OnPlayerDamaged;
+
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        OnPlayerDamaged?.Invoke(health);
     }
     public void Damage(float damage){
         if (Time.time > canDamage){
             StartCoroutine(ColorDamage());
             health = health - damage;
+            OnPlayerDamaged?.Invoke(health);
             canDamage = Time.time + cooldownDamage;
         }
     }

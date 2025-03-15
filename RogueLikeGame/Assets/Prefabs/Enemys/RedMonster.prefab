@@ -173,6 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f534073a3cbb5c94691b364fc1e925f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  experience: 0
+  orbXpPrefab: {fileID: 6693726058522942587, guid: 739b728127ee07645a723aacbcac18ce, type: 3}
 --- !u!114 &8657444511251604268
 MonoBehaviour:
   m_ObjectHideFlags: 0
