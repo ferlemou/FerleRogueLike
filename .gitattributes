@@ -2,3 +2,4 @@
 *.hlsl linguist-detectable=false
 *.cginc linguist-detectable=false
 *.mat linguist-detectable=false
+*.wlt linguist-detectable=false
