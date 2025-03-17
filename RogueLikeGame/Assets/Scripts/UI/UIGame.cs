@@ -12,12 +12,14 @@ public class UIGame : MonoBehaviour
     private void OnEnable() {
         PlayerHealth.OnPlayerDamaged += ShowHealth;
         EnemyHealth.MonsterDeath += ShowDeaths;
-        PlayerLevel.LevelUp += ShowLevelUp;
+        PlayerLevel.OnLevelUp += ShowLevelUp;
         PlayerLevel.ExpUp += ShowExp;
     }
     private void OnDisable() {
         PlayerHealth.OnPlayerDamaged -= ShowHealth;
         EnemyHealth.MonsterDeath -= ShowDeaths;
+        PlayerLevel.OnLevelUp -= ShowLevelUp;
+        PlayerLevel.ExpUp -= ShowExp;
     }
     private void Start() {
         ShowDeaths();

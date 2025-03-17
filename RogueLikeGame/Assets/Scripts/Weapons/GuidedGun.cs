@@ -22,9 +22,13 @@ public class GuidedGun : MonoBehaviour, IGun
     public float ProjSpeed => projSpeed;
 
     [Header("Dependências")]
-    public GameObject projectilePrefab;
+    [SerializeField]
+    private GameObject projectilePrefab;
+    public GameObject ProjectilePrefab => projectilePrefab;
+
+    [SerializeField]
+    private GameObject hand;
     public GameObject player;
-    public GameObject hand;
     public LayerMask enemyLayer;
     private Vector3 enemyPosition;
     private Quaternion shotRotation;

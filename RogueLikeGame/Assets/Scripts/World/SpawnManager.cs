@@ -7,10 +7,13 @@ public class SpawnManager : MonoBehaviour
     [Header("Prefab Inimigos para spawnar")]
     [SerializeField]
     private GameObject RedMonster;
+
     bool Spawning;
     [SerializeField, Tooltip("intervalo entre spawn's")]
     private float SpawnRate;
     [SerializeField, Tooltip("distancia do player")]
+
+    private int Levelplayer;
     private int limitX, limitY;
     private int directionSpawn, ValueRandom;
     private float enemyLife;
@@ -18,14 +21,27 @@ public class SpawnManager : MonoBehaviour
 
     private Transform center;
     private Vector3 SpawnPosition;
+    [System.Serializable]
+    public class Enemys{
+        public int level;
+        public GameObject enemyPrefab;
+        public float enemyLife;
+        public float enemyExp;
+    }
+    public List<Enemys> enemys = new List<Enemys>();
     private void OnEnable() {
         PlayerHealth.OnPlayerDeath += PlayerDeath;
+        PlayerLevel.OnLevelUp += LevelUp;
     }
     private void OnDisable() {
         PlayerHealth.OnPlayerDeath -= PlayerDeath;
+        PlayerLevel.OnLevelUp -= LevelUp;
     }
     private void PlayerDeath(){
         Spawning = false;
+    }
+    private void LevelUp(int pLevel){
+        Levelplayer = pLevel;
     }
     void Start()
     {
@@ -76,6 +92,14 @@ public class SpawnManager : MonoBehaviour
                 enemyHealth.Started(enemyLife, enemyExp);
             }
 
+            yield return new WaitForSeconds(SpawnRate);
+        }
+    }
+    IEnumerator SpawnEnemys(){
+        while (Spawning){
+            GameObject EnemySpawns;
+            GameObject EnemyInstan = Instantiate (EnemySpawns, SpawnPosition, Quaternion.identity);
+            EnemyHealth enemyHealth = EnemyInstan.GetComponent<EnemyHealth>();
             yield return new WaitForSeconds(SpawnRate);
         }
     }

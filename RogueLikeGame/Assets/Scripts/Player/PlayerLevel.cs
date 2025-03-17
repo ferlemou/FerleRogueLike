@@ -12,11 +12,11 @@ public class PlayerLevel : MonoBehaviour
     [SerializeField]
     private int level;
 
-    public static event Action<int> LevelUp;
+    public static event Action<int> OnLevelUp;
     public static event Action<float> ExpUp;
     private void Start() {
         ExpUp?.Invoke(expTotal);
-        LevelUp?.Invoke(level);
+        OnLevelUp?.Invoke(level);
     }
     public void GetExp(float value){
         expTotal = expTotal + value;
@@ -24,7 +24,7 @@ public class PlayerLevel : MonoBehaviour
         if (expTotal >= expToUp){
             expToUp = expToUp + (50f * level);
             level++;
-            LevelUp?.Invoke(level);
+            OnLevelUp?.Invoke(level);
         }
     }
 }

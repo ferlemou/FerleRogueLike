@@ -306,8 +306,8 @@ MonoBehaviour:
   damage: 10
   projSpeed: 10
   projectilePrefab: {fileID: 8518023137017485952, guid: 91728cdd18379be4fb3c63532473168a, type: 3}
-  player: {fileID: 1831566991}
   hand: {fileID: 615246444}
+  player: {fileID: 1831566991}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -4794,8 +4794,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RedMonster: {fileID: 6460752517597846497, guid: b14613c588d630b45a4c7a3a41237090, type: 3}
   SpawnRate: 1
-  limitX: 5
-  limitY: 10
+  Levelplayer: 0
+  enemys:
+  - level: 0
+    enemyPrefab: {fileID: 0}
+  - level: 0
+    enemyPrefab: {fileID: 0}
+  - level: 0
+    enemyPrefab: {fileID: 0}
 --- !u!1 &2082156038
 GameObject:
   m_ObjectHideFlags: 0
