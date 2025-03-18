@@ -4758,6 +4758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2029085658}
   - component: {fileID: 2029085659}
+  - component: {fileID: 2029085660}
   m_Layer: 0
   m_Name: SpawnController
   m_TagString: GameController
@@ -4787,7 +4788,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029085657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0782125a6d56f0946b7296e2151aaa2c, type: 3}
   m_Name: 
@@ -4795,13 +4796,36 @@ MonoBehaviour:
   RedMonster: {fileID: 6460752517597846497, guid: b14613c588d630b45a4c7a3a41237090, type: 3}
   SpawnRate: 1
   Levelplayer: 0
+  limitX: 0
+  limitY: 0
+--- !u!114 &2029085660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2029085657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1484d0bb963266d4b9c439379c24c0bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 1
+  limitX: 6
+  limitY: 12
   enemys:
-  - level: 0
-    enemyPrefab: {fileID: 0}
-  - level: 0
-    enemyPrefab: {fileID: 0}
-  - level: 0
-    enemyPrefab: {fileID: 0}
+  - enemyPrefab: {fileID: 6460752517597846497, guid: b14613c588d630b45a4c7a3a41237090, type: 3}
+    enemyLevel: 0
+    enemyLife: 10
+    enemyExp: 15
+  - enemyPrefab: {fileID: 7457543157689852841, guid: 017f717519482a44abe6d01deac31a3b, type: 3}
+    enemyLevel: 2
+    enemyLife: 25
+    enemyExp: 50
+  - enemyPrefab: {fileID: 8897150725444302934, guid: e1293e4f21cadd8468a670b22260c0a0, type: 3}
+    enemyLevel: 5
+    enemyLife: 10
+    enemyExp: 5
 --- !u!1 &2082156038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4944,8 +4968,8 @@ SceneRoots:
   - {fileID: 683303362}
   - {fileID: 1831566993}
   - {fileID: 253736269}
+  - {fileID: 1449517340}
   - {fileID: 2029085658}
   - {fileID: 931293856}
   - {fileID: 677407464}
   - {fileID: 1881500926}
-  - {fileID: 1449517340}
